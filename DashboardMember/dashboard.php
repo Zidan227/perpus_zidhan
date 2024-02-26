@@ -21,7 +21,21 @@ require "../config/config.php";
 // query read semua buku
 $buku = queryReadData("SELECT * FROM buku");
 //search buku
-
+if (isset($_POST["search"])) {
+  $buku = search($_POST["keyword"]);
+}
+//read buku informatika
+if (isset($_POST["Dongeng"])) {
+  $buku = queryReadData("SELECT * FROM buku WHERE kategori = 'Dongeng'");
+}
+//read buku bisnis
+if (isset($_POST["Komik"])) {
+  $buku = queryReadData("SELECT * FROM buku WHERE kategori = 'Komik'");
+}
+//read buku filsafat
+if (isset($_POST["Novel"])) {
+  $buku = queryReadData("SELECT * FROM buku WHERE kategori = 'Novel'");
+}
 ?>
 
 <head>
