@@ -297,15 +297,22 @@ function updateBuku($dataBuku)
   return mysqli_affected_rows($connection);
 }
 
-// Hapus member yang terdaftar
+// DELETE DATA Member
 function deleteMember($nisnMember)
 {
   global $connection;
 
-  $deleteMember = "DELETE FROM member WHERE nisn = $nisnMember";
-  mysqli_query($connection, $deleteMember);
+  $queryDeletePinjam = "DELETE FROM peminjaman WHERE nisn = '$nisnMember'
+  ";
+  mysqli_query($connection, $queryDeletePinjam);
+
+  $queryDeletemember = "DELETE FROM member WHERE nisn = '$nisnMember'
+  ";
+  mysqli_query($connection, $queryDeletemember);
+
   return mysqli_affected_rows($connection);
 }
+
 function deleteAdmin($id)
 {
   global $connection;

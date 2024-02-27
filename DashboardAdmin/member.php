@@ -321,6 +321,9 @@ if (!isset($_SESSION['username'])) {
                     if (isset($_POST['hapus'])) {
                       $nisn = $_POST['nisn'];
 
+                      $queryDeletePinjam = "DELETE FROM peminjaman WHERE nisn = '$nisn'";
+                      mysqli_query($connection, $queryDeletePinjam);
+
                       $delete = mysqli_query($connection, "delete from member where nisn='$nisn'");
                       if ($delete) {
 
